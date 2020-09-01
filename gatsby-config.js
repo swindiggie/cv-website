@@ -12,7 +12,10 @@
 // }
 
 module.exports = {
+  pathPrefix: "/cv-website",
   plugins: [
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

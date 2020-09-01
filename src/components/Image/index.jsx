@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import "./styles.css";
 
 export default function Image() {
   const data = useStaticQuery(graphql`
@@ -9,8 +10,8 @@ export default function Image() {
         childImageSharp {
           # Specify a fixed image and fragment.
           # The default width is 400 pixels
-          fixed {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 1000, quality: 100) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -18,7 +19,8 @@ export default function Image() {
   `);
   return (
     <Img
-      fixed={data.file.childImageSharp.fixed}
+      className="gatsby-img"
+      fluid={data.file.childImageSharp.fluid}
       alt="Gatsby Docs are awesome"
     />
   )
